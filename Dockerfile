@@ -3,21 +3,20 @@
 #
 # VERSION               0.1
 
-FROM alpine:latest
+FROM debian:jessy-slim
 
 MAINTAINER Riftbit ErgoZ <ergozru@riftbit.com>
 
 WORKDIR /opt/shoutcast
 
 # Prepare APK CDNs
-RUN apk update && apk upgrade && \
-    apk add --update wget tar gzip && \
-    wget http://download.nullsoft.com/shoutcast/tools/sc_serv2_linux_x64-latest.tar.gz && \
-    tar zxf sc_serv2_linux_x64-latest.tar.gz && \
+RUN apt-get update && \
+    apt-get install curl tar gzip && \
+    && curl http://download.nullsoft.com/shoutcast/tools/sc_serv2_linux_x64-latest.tar.gz | tar xz \
     rm sc_serv2_linux_x64-latest.tar.gz && \
     mkdir -p control logs \
-    apk del wget tar gzip && \
-    rm -rf /var/cache/apk/*
+    && apt-get purge --auto-remove -y curl tar gzip && \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY sc_serv.conf .
 
