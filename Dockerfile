@@ -21,7 +21,8 @@ RUN apk update && apk upgrade && \
 
 COPY sc_serv.conf .
 
-VOLUME [ "/opt/shoutcast/sc_serv.conf", "/opt/shoutcast/logs"]
+#do not forget about /opt/shoutcast/sc_serv.conf
+VOLUME ["/opt/shoutcast/logs"]
 
 EXPOSE 8000:8000/tcp 8001:8001/tcp
 
