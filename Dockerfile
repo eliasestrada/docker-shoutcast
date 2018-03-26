@@ -12,11 +12,11 @@ WORKDIR /opt/shoutcast
 # Prepare APK CDNs
 RUN apt-get update && \
     apt-get install curl tar gzip && \
-    && curl http://download.nullsoft.com/shoutcast/tools/sc_serv2_linux_x64-latest.tar.gz | tar xz && \
+    curl http://download.nullsoft.com/shoutcast/tools/sc_serv2_linux_x64-latest.tar.gz | tar xz && \
     rm sc_serv2_linux_x64-latest.tar.gz && \
     mkdir -p control logs && \
-    && apt-get purge --auto-remove -y curl tar gzip && \
-    && rm -rf /var/lib/apt/lists/*
+    apt-get purge --auto-remove -y curl tar gzip && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY sc_serv.conf .
 
