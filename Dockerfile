@@ -3,7 +3,7 @@
 #
 # VERSION               0.1
 
-FROM debian:jessy-slim
+FROM debian:jessie-slim
 
 MAINTAINER Riftbit ErgoZ <ergozru@riftbit.com>
 
