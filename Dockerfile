@@ -13,7 +13,6 @@ WORKDIR /opt/shoutcast
 RUN apt-get update && \
     apt-get install -y curl && \
     curl http://download.nullsoft.com/shoutcast/tools/sc_serv2_linux_x64-latest.tar.gz | tar xz && \
-    rm sc_serv2_linux_x64-latest.tar.gz && \
     mkdir -p control logs && \
     apt-get purge --auto-remove -y curl && \
     rm -rf /var/lib/apt/lists/*
